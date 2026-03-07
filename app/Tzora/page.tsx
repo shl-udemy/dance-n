@@ -1,16 +1,160 @@
-import VenuePageLayout from "@/components/VenuePageLayout";
+import Link from "next/link";
+
+const MAPS_URL = "https://maps.google.com/?q=קיבוץ+צרועה+בית+שמש";
+
+const UPCOMING_DATES = ["09.03"];
+
+const AMENITIES = [
+  { icon: "🅿️", title: "חניה בשפע", desc: "רחבה ונוחה ומוארת", bg: "bg-green-100" },
+  { icon: "❄️", title: "סיזוג אוויר", desc: "אולם ממוזג טוב", bg: "bg-blue-100" },
+  { icon: "☕", title: "פינת קפה", desc: "משקאות וחטיפים קלים", bg: "bg-orange-100" },
+];
 
 export default function TzoraPage() {
   return (
-    <VenuePageLayout
-      venueName="רוקדים בצורעה"
-      gradientFrom="from-amber-500"
-      gradientTo="to-yellow-400"
-      scheduleItems={[
-        { day: "יום שני", time: "20:00 – 22:00", location: "מקום לפרסום", note: "הרקדה קבועה פתוחה לכולם" },
-        { day: "יום חמישי", time: "19:00 – 21:00", location: "מקום לפרסום", note: "הרקדה בהרשמה מראש" },
-      ]}
-      about="הרקדות ריקודי עם בצורעה – מפגש שבועי מרגש עם קהילה חמה ואנרגיה טובה. כולם מוזמנים!"
-    />
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-yellow-50">
+
+      {/* Back link */}
+      <div className="px-4 pt-4">
+        <Link href="/" className="inline-flex items-center gap-1 text-amber-600 text-sm hover:underline">
+          → חזרה לדף הבית
+        </Link>
+      </div>
+
+      {/* Header */}
+      <section className="pt-6 pb-8 px-4 text-center">
+        <div className="max-w-2xl mx-auto">
+          <span className="inline-flex items-center gap-1 bg-amber-100 text-amber-700 font-semibold px-4 py-1.5 rounded-full text-sm mb-4">
+            📍 צורעה
+          </span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-3">
+            <span className="text-gray-800">רוקדים </span>
+            <span className="bg-gradient-to-l from-amber-500 to-yellow-400 bg-clip-text text-transparent">
+              בצורעה
+            </span>
+          </h1>
+          <p className="text-gray-500 text-base sm:text-lg">
+            הרקדה שבועית באווירה מקצועית ומזמינה
+          </p>
+        </div>
+      </section>
+
+      {/* Info card */}
+      <section className="px-4 pb-8">
+        <div className="max-w-2xl mx-auto bg-white rounded-3xl shadow-lg p-6 sm:p-8">
+          <div className="grid grid-cols-2 gap-6 mb-6">
+            {/* Day */}
+            <div className="flex items-start gap-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-lg shrink-0">
+                📅
+              </div>
+              <div>
+                <p className="text-xs text-gray-400 font-medium mb-0.5">יום</p>
+                <p className="font-bold text-gray-800">שני</p>
+              </div>
+            </div>
+
+            {/* Location */}
+            <div className="flex items-start gap-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-lg shrink-0">
+                📍
+              </div>
+              <div>
+                <p className="text-xs text-gray-400 font-medium mb-0.5">מיקום</p>
+                <p className="font-bold text-gray-800 text-sm">אולם ספורט, קיבוץ צרועה</p>
+                <p className="text-amber-600 text-xs mt-0.5">(על יד בית שמש)</p>
+              </div>
+            </div>
+
+            {/* Hours */}
+            <div className="flex items-start gap-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-lg shrink-0">
+                🕐
+              </div>
+              <div>
+                <p className="text-xs text-gray-400 font-medium mb-0.5">שעות</p>
+                <p className="font-bold text-gray-800">20:00–23:00</p>
+              </div>
+            </div>
+
+            {/* Dance type */}
+            <div className="flex items-start gap-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-lg shrink-0">
+                👥
+              </div>
+              <div>
+                <p className="text-xs text-gray-400 font-medium mb-0.5">סוג הרקדה</p>
+                <p className="font-bold text-gray-800 text-sm">הרקדה לכולם</p>
+                <p className="text-gray-500 text-xs mt-0.5">מעגלים בלבד</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Entry fee */}
+          <div className="text-center mb-6">
+            <span className="inline-flex items-center gap-2 bg-gradient-to-l from-amber-500 to-yellow-400 text-white font-bold px-6 py-2.5 rounded-full text-base shadow">
+              🎟 ₪40 כניסה
+            </span>
+          </div>
+
+          {/* Upcoming dates */}
+          <div>
+            <p className="text-sm font-semibold text-gray-600 mb-3 text-center">תאריכי הרקדות קרובות</p>
+            <div className="flex gap-2 justify-center flex-wrap">
+              {UPCOMING_DATES.map((date) => (
+                <span
+                  key={date}
+                  className="px-4 py-1.5 bg-amber-50 text-amber-700 rounded-full text-sm font-medium"
+                >
+                  {date}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Amenities */}
+      <section className="px-4 pb-8">
+        <div className="max-w-2xl mx-auto grid grid-cols-3 gap-3 sm:gap-4">
+          {AMENITIES.map(({ icon, title, desc, bg }) => (
+            <div key={title} className="bg-white rounded-2xl shadow p-4 text-center">
+              <div className={`w-12 h-12 mx-auto mb-3 rounded-xl ${bg} flex items-center justify-center text-2xl`}>
+                {icon}
+              </div>
+              <p className="font-bold text-gray-800 text-sm">{title}</p>
+              <p className="text-gray-400 text-xs mt-1">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Navigate button */}
+      <section className="px-4 pb-12 text-center">
+        <a
+          href={MAPS_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-gradient-to-l from-amber-500 to-yellow-400 text-white font-bold px-8 py-3 rounded-full text-base hover:opacity-90 transition-opacity shadow-lg"
+        >
+          ✈️ הגעה למקום
+        </a>
+      </section>
+
+      {/* Dance request CTA */}
+      <section className="py-12 px-4 bg-gradient-to-b from-white to-amber-50 text-center">
+        <p className="text-gray-600 mb-6 text-lg">רוצים לבקש ריקוד מסוים?</p>
+        <Link
+          href="/request"
+          className="inline-block bg-gradient-to-l from-orange-500 to-rose-500 text-white font-bold px-6 py-3 sm:px-10 sm:py-4 rounded-full text-base sm:text-lg hover:opacity-90 transition-opacity shadow-lg"
+        >
+          🪩 שלחו בקשת ריקוד
+        </Link>
+      </section>
+
+      <footer className="py-8 text-center text-gray-500 text-sm">
+        <p>© 2026 נילי אלגזר - במעגל עם נילי</p>
+      </footer>
+    </div>
   );
 }
