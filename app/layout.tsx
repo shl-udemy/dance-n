@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "בקשת ריקוד | Dance Request",
-  description: "שלח בקשת ריקוד לאירוע / Send a dance request for the event",
+  title: "במעגל עם נילי",
+  description: "נילי אלגזר – מדריכת ריקודי עם | הרקדות קבועות ופתוחות ברחבי הארץ",
 };
 
 export default function RootLayout({
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="he" dir="rtl">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased pt-20">
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
