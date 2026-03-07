@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const PLACES = ["Dance-R", "Dance-B", "Dance-Z"] as const;
+const PLACES = ["רעננה", "באר שבע", "צלפון"] as const;
 const RATE_LIMIT_MS = 60_000;
 const LS_NAME_KEY = "dance_request_name";
 const LS_LAST_SUBMIT_KEY = "dance_request_last_submit";
