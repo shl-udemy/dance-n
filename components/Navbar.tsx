@@ -19,7 +19,7 @@ export default function Navbar() {
         <nav className="flex items-center justify-between flex-wrap gap-2">
           <Link
             href="/"
-            className="text-2xl font-bold text-orange-600 shrink-0"
+            className="text-xl sm:text-2xl font-bold text-orange-600 shrink-0"
           >
             במעגל עם נילי
           </Link>

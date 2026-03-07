@@ -26,11 +26,11 @@ export default function VenuePageLayout({
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-rose-50">
 
       {/* Hero */}
-      <section className={`py-20 px-4 bg-gradient-to-br ${gradientFrom} ${gradientTo}`}>
+      <section className={`py-12 md:py-20 px-4 bg-gradient-to-br ${gradientFrom} ${gradientTo}`}>
         <div className="max-w-4xl mx-auto text-center text-white">
-          <div className="text-6xl mb-6">📍</div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{venueName}</h1>
-          <p className="text-xl opacity-90">הרקדות קבועות ופתוחות</p>
+          <div className="text-5xl md:text-6xl mb-6">📍</div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">{venueName}</h1>
+          <p className="text-lg sm:text-xl opacity-90">הרקדות קבועות ופתוחות</p>
         </div>
       </section>
 
@@ -63,7 +63,7 @@ export default function VenuePageLayout({
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-3xl shadow-lg p-8 md:p-12 text-center">
             <h2 className="text-2xl font-bold text-gray-800 mb-6">על ההרקדה</h2>
-            <p className="text-lg text-gray-600 leading-relaxed">{about}</p>
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed">{about}</p>
           </div>
         </div>
       </section>
@@ -73,7 +73,7 @@ export default function VenuePageLayout({
         <p className="text-gray-600 mb-6 text-lg">רוצים לבקש ריקוד מסוים?</p>
         <Link
           href="/request"
-          className="inline-block bg-gradient-to-l from-orange-500 to-rose-500 text-white font-bold px-10 py-4 rounded-full text-lg hover:opacity-90 transition-opacity shadow-lg"
+          className="inline-block bg-gradient-to-l from-orange-500 to-rose-500 text-white font-bold px-6 py-3 sm:px-10 sm:py-4 rounded-full text-base sm:text-lg hover:opacity-90 transition-opacity shadow-lg"
         >
           🪩 שלחו בקשת ריקוד
         </Link>

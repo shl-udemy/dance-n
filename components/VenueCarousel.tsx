@@ -18,7 +18,7 @@ export default function VenueCarousel() {
 
   return (
     <div className="flex flex-col items-center gap-6">
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4 w-full justify-center">
         <button
           onClick={next}
           aria-label="הקודם"
@@ -27,7 +27,7 @@ export default function VenueCarousel() {
           ←
         </button>
 
-        <Link href={href} className="w-80">
+        <Link href={href} className="w-full max-w-sm">
           <div className="group relative overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
             <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
             <div className="relative p-8 text-center">
