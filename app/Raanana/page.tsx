@@ -94,7 +94,7 @@ export default function RaananaPage() {
               <span className="inline-flex items-center gap-2 bg-gradient-to-l from-teal-500 to-emerald-400 text-white font-bold px-6 py-2.5 rounded-full text-base shadow">
                 🎟 ₪40 כניסה
               </span>
-              <p className="text-gray-400 text-xs mt-2">מבוגרים חינם</p>
+              <p className="text-gray-400 text-xs mt-2">מנויים חינם</p>
             </div>
           </div>
         </div>
