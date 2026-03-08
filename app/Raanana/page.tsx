@@ -58,7 +58,7 @@ export default function RaananaPage() {
                 <div>
                   <p className="text-xs text-gray-400 font-medium mb-0.5">מיקום</p>
                   <p className="font-bold text-gray-800 text-sm">קאנטרי רעננה</p>
-                  <p className="text-gray-500 text-xs mt-0.5">רחוב הנחמד 15 רעננה</p>
+                  <p className="text-gray-500 text-xs mt-0.5">רחוב הסדנא 15 רעננה</p>
                 </div>
               </div>
 
