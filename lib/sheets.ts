@@ -11,8 +11,15 @@ export async function logToSheet(data: RequestData): Promise<void> {
     return;
   }
 
+  let credentials: ReturnType<typeof JSON.parse>;
   try {
-    const credentials = JSON.parse(rawJson);
+    credentials = JSON.parse(rawJson);
+  } catch (parseErr) {
+    console.error("Google Sheets: failed to parse GOOGLE_SERVICE_ACCOUNT_JSON:", (parseErr as Error).message);
+    return;
+  }
+
+  try {
     const auth = new google.auth.GoogleAuth({
       credentials,
       scopes: ["https://www.googleapis.com/auth/spreadsheets"],
