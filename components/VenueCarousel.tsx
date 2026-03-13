@@ -24,7 +24,7 @@ export default function VenueCarousel() {
           aria-label="הקודם"
           className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-orange-500 hover:bg-orange-50 transition text-xl font-bold shrink-0"
         >
-          ←
+          →
         </button>
 
         <Link href={href} className="w-full max-w-sm">
@@ -54,7 +54,7 @@ export default function VenueCarousel() {
           aria-label="הבא"
           className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-orange-500 hover:bg-orange-50 transition text-xl font-bold shrink-0"
         >
-          →
+          ←
         </button>
       </div>
 
