@@ -11,14 +11,13 @@ const DANCE_TYPE_LABEL: Record<RequestData["danceType"], string> = {
   circle: "מעגל",
 };
 
-const CHAT_ID_MAP: Record<RequestData["place"], string | undefined> = {
-  "Dance-R": process.env.TELEGRAM_CHAT_ID_DANCE_R,
-  "Dance-B": process.env.TELEGRAM_CHAT_ID_DANCE_B,
-  "Dance-Z": process.env.TELEGRAM_CHAT_ID_DANCE_Z,
-};
-
 export function getChatId(place: string): string | undefined {
-  return CHAT_ID_MAP[place as RequestData["place"]];
+  const map: Record<RequestData["place"], string | undefined> = {
+    "Dance-R": process.env.TELEGRAM_CHAT_ID_DANCE_R,
+    "Dance-B": process.env.TELEGRAM_CHAT_ID_DANCE_B,
+    "Dance-Z": process.env.TELEGRAM_CHAT_ID_DANCE_Z,
+  };
+  return map[place as RequestData["place"]];
 }
 
 export function buildMessage(data: RequestData): string {
