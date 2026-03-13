@@ -39,7 +39,7 @@ export async function logToSheet(data: RequestData): Promise<void> {
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: sheetId,
-      range: "A:F",
+      range: "A1",
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [
