@@ -2,7 +2,11 @@
 
 import { useEffect, useState } from "react";
 
-const PLACES = ["רעננה", "באר שבע", "צלפון"] as const;
+const PLACES: { label: string; id: string }[] = [
+  { label: "רעננה", id: "Dance-R" },
+  { label: "באר שבע", id: "Dance-B" },
+  { label: "צלפון", id: "Dance-Z" },
+];
 const RATE_LIMIT_MS = 60_000;
 const LS_NAME_KEY = "dance_request_name";
 const LS_LAST_SUBMIT_KEY = "dance_request_last_submit";
@@ -12,7 +16,7 @@ export default function DanceRequestForm() {
   const [danceName, setDanceName] = useState("");
   const [performer, setPerformer] = useState("");
   const [danceType, setDanceType] = useState<"couples" | "circle" | "">("");
-  const [place, setPlace] = useState<string>(PLACES[0]);
+  const [place, setPlace] = useState<string>(PLACES[0].id);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
@@ -27,7 +31,7 @@ export default function DanceRequestForm() {
     setDanceName("");
     setPerformer("");
     setDanceType("");
-    setPlace(PLACES[0]);
+    setPlace(PLACES[0].id);
     setName(keepName);
   }
 
@@ -162,8 +166,8 @@ export default function DanceRequestForm() {
           className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 transition bg-white"
         >
           {PLACES.map((p) => (
-            <option key={p} value={p}>
-              {p}
+            <option key={p.id} value={p.id}>
+              {p.label}
             </option>
           ))}
         </select>
