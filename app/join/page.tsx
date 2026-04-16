@@ -36,7 +36,7 @@ export default async function JoinPage() {
           </h1>
 
           {subtitle && (
-            <p className="text-lg sm:text-xl text-gray-600 mb-6">{subtitle}</p>
+            <p className="text-lg sm:text-xl text-gray-600 mb-6 whitespace-pre-line">{subtitle}</p>
           )}
 
           {/* Event details */}
