@@ -6,7 +6,7 @@ export default function WorkshopPage() {
     <div className="min-h-screen bg-white" dir="rtl">
 
       {/* Hero */}
-      <section className="bg-gradient-to-b from-orange-500 via-rose-500 to-amber-400 pt-10 pb-14 px-4 text-center">
+      <section className="bg-gradient-to-b from-blue-600 via-blue-500 to-sky-400 pt-10 pb-14 px-4 text-center">
         <div className="max-w-sm mx-auto mb-6">
           <Image
             src="/nili-logo-1.jpg"
@@ -30,12 +30,12 @@ export default function WorkshopPage() {
         <p className="text-lg text-gray-600 leading-relaxed">
           תמיד חלמת לרקוד ריקודי עם וחששת לנסות?
           <br />
-          <span className="font-semibold text-rose-500">זה הזמן....</span>
+          <span className="font-semibold text-blue-500">זה הזמן....</span>
         </p>
       </section>
 
       {/* Dancers placeholder */}
-      <section className="py-12 px-6 bg-gradient-to-br from-orange-50 to-rose-50 text-center">
+      <section className="py-12 px-6 bg-gradient-to-br from-blue-50 to-sky-50 text-center">
         <div className="text-7xl mb-4">💃🕺</div>
         <p className="text-xl font-bold text-gray-700">אז ככה...</p>
       </section>
@@ -50,7 +50,7 @@ export default function WorkshopPage() {
           ].map((item) => (
             <div
               key={item}
-              className="flex items-center gap-3 bg-orange-50 rounded-2xl px-5 py-4 border border-orange-100"
+              className="flex items-center gap-3 bg-blue-50 rounded-2xl px-5 py-4 border border-blue-100"
             >
               <span className="text-2xl">✅</span>
               <span className="text-lg font-semibold text-gray-800">{item}</span>
@@ -60,7 +60,7 @@ export default function WorkshopPage() {
       </section>
 
       {/* Workshop details */}
-      <section className="py-12 px-6 bg-gradient-to-br from-rose-500 to-orange-400 text-center text-white">
+      <section className="py-12 px-6 bg-gradient-to-br from-blue-600 to-sky-500 text-center text-white">
         <div className="max-w-md mx-auto">
           <div className="text-4xl mb-5">🎶</div>
           <div className="space-y-3 text-lg leading-relaxed">
@@ -74,7 +74,7 @@ export default function WorkshopPage() {
 
       {/* Personal guidance */}
       <section className="py-12 px-6 bg-white text-center">
-        <div className="max-w-md mx-auto bg-orange-50 rounded-3xl px-6 py-8 border border-orange-100">
+        <div className="max-w-md mx-auto bg-blue-50 rounded-3xl px-6 py-8 border border-blue-100">
           <div className="text-4xl mb-4">🤝</div>
           <p className="text-lg font-semibold text-gray-800 leading-relaxed">
             אני אדריך אותך אישית
@@ -85,10 +85,10 @@ export default function WorkshopPage() {
       </section>
 
       {/* Pricing */}
-      <section className="py-12 px-6 bg-gradient-to-br from-amber-50 to-orange-50 text-center">
-        <div className="max-w-sm mx-auto bg-white rounded-3xl shadow-lg border border-orange-200 px-6 py-8">
+      <section className="py-12 px-6 bg-gradient-to-br from-blue-50 to-sky-50 text-center">
+        <div className="max-w-sm mx-auto bg-white rounded-3xl shadow-lg border border-blue-200 px-6 py-8">
           <div className="text-4xl mb-4">🏷️</div>
-          <p className="text-4xl font-extrabold text-rose-500 mb-1">480 ₪</p>
+          <p className="text-4xl font-extrabold text-blue-600 mb-1">480 ₪</p>
           <p className="text-gray-500 text-sm mb-5">תשלום חד פעמי</p>
           <div className="space-y-2 text-gray-700 text-base">
             <p>📅 3 מפגשים · 6 שעות סה״כ</p>
@@ -99,7 +99,7 @@ export default function WorkshopPage() {
       </section>
 
       {/* Signup form */}
-      <section className="py-14 px-6 bg-gradient-to-b from-rose-500 to-orange-400 text-center">
+      <section className="py-14 px-6 bg-gradient-to-b from-blue-600 to-sky-500 text-center">
         <div className="max-w-md mx-auto">
           <p className="text-2xl font-extrabold text-white mb-2">
             מלאי כאן את הפרטים

@@ -96,7 +96,7 @@ export default function WorkshopSignupForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="w-full py-4 rounded-xl bg-white text-rose-600 font-bold text-xl hover:bg-white/90 transition disabled:opacity-60 shadow-lg"
+        className="w-full py-4 rounded-xl bg-white text-blue-600 font-bold text-xl hover:bg-white/90 transition disabled:opacity-60 shadow-lg"
       >
         {status === "loading" ? "שולח..." : "בטח, גם אני רוצה! 🕺"}
       </button>
