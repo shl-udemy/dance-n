@@ -85,13 +85,15 @@ export default function WorkshopPage() {
       {/* Pricing */}
       <section className="py-12 px-6 bg-[#f3e5f5] text-center">
         <div className="max-w-sm mx-auto bg-white rounded-3xl shadow-lg border border-[#8E24AA]/20 px-6 py-8">
-          <div className="text-4xl mb-4">🏷️</div>
-          <p className="text-4xl font-extrabold text-[#FBC02D] mb-1">480 ₪</p>
-          <p className="text-gray-500 text-sm mb-5">תשלום חד פעמי</p>
-          <div className="space-y-2 text-gray-700 text-base">
+          <div className="text-4xl mb-5">🏷️</div>
+          <div className="space-y-2 text-gray-700 text-base mb-6">
             <p>📅 3 מפגשים · 6 שעות סה״כ</p>
             <p>👥 עד 10 משתתפים בלבד</p>
             <p>🎓 ידע בסיסי ובטחון להכנס למעגל הרוקדים</p>
+          </div>
+          <div className="border-t border-[#8E24AA]/10 pt-5">
+            <p className="text-4xl font-extrabold text-[#FBC02D]">480 ₪</p>
+            <p className="text-gray-500 text-sm mt-1">סכום חד פעמי</p>
           </div>
         </div>
       </section>
