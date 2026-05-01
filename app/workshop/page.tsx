@@ -64,7 +64,7 @@ export default function WorkshopPage() {
           <div className="space-y-3 text-lg leading-relaxed">
             <p className="text-2xl font-extrabold">3 מפגשים של שעתיים</p>
             <p>שבהם נלמד צעדי בסיס</p>
-            <p className="font-semibold">15-20 וריקודי מתחילים</p>
+            <p className="font-semibold">15-20 ריקודי מתחילים</p>
             <p>שתוכלו לתרגל את הצעדים ולצבור בטחון על הרחבה</p>
           </div>
         </div>
