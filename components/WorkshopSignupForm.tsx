@@ -9,7 +9,7 @@ export default function WorkshopSignupForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const lastSubmit = localStorage.getItem("workshop_last_submit");
@@ -96,7 +96,7 @@ export default function WorkshopSignupForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="w-full py-4 rounded-xl bg-white text-blue-600 font-bold text-xl hover:bg-white/90 transition disabled:opacity-60 shadow-lg"
+        className="w-full py-4 rounded-xl bg-[#FBC02D] text-[#6A1B9A] font-bold text-xl hover:opacity-90 transition disabled:opacity-60 shadow-lg"
       >
         {status === "loading" ? "שולח..." : "בטח, גם אני רוצה! 🕺"}
       </button>
