@@ -1,0 +1,7 @@
+- create page workshop
+- list of sections is next 
+- header is nili-logo-1.jpg in this folder
+- header בואו להתחיל לרקוד
+- dancers image 
+- text content from content.txt - orgnized to logical sections 
+- after form similar to form-signup.jpg
