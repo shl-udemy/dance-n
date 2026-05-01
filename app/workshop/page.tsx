@@ -17,20 +17,18 @@ export default function WorkshopPage() {
           />
         </div>
         <h1 className="text-4xl sm:text-5xl font-extrabold text-white drop-shadow mb-3">
-          בואו להתחיל לרקוד
+          ריקודי עם מתחילים כאן
         </h1>
-        <p className="text-white/90 text-lg font-medium">רוצים לרקוד ריקודי עם? זה הזמן להצטרף!</p>
+        <p className="text-white/90 text-lg font-medium">גם אם אף פעם לא רקדתם</p>
       </section>
 
       {/* Emotional hook */}
       <section className="py-12 px-6 text-center bg-white">
         <p className="text-2xl font-bold text-gray-800 mb-4">
-          זה הזמן להתחיל לרקוד ריקודי עם
+          קל להתחיל, כיף להתמיד
         </p>
         <p className="text-lg text-gray-600 leading-relaxed">
-          תמיד חלמת לרקוד ריקודי עם וחששת לנסות?
-          <br />
-          <span className="font-semibold text-[#8E24AA]">זה הזמן....</span>
+          לימוד בקצב נוח, אווירה נעימה והמון הנאה.
         </p>
       </section>
 
