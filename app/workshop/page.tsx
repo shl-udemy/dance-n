@@ -73,7 +73,7 @@ export default function WorkshopPage() {
       {/* Personal guidance */}
       <section className="py-12 px-6 bg-white text-center">
         <div className="max-w-md mx-auto bg-[#F8F1E7] rounded-3xl px-6 py-8 border border-[#5A3E2B]/20">
-          <div className="text-4xl mb-4">🤝</div>
+          {/* <div className="text-4xl mb-4">🤝</div> */}
           <p className="text-lg font-semibold text-[#5A3E2B] leading-relaxed">
             👩‍🦰 בהדרכת נילי אלגזר
             <br />
