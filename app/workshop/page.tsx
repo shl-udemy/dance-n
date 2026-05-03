@@ -75,13 +75,17 @@ export default function WorkshopPage() {
         <div className="max-w-md mx-auto bg-[#F8F1E7] rounded-3xl px-6 py-8 border border-[#5A3E2B]/20">
           <div className="text-4xl mb-4">🤝</div>
           <p className="text-lg font-semibold text-[#5A3E2B] leading-relaxed">
-            אני אדריך אותך אישית
+            👩‍🦰 בהדרכת נילי אלגזר
             <br />
-            בצורה סבלנית, ברורה ואיכותית
+            מדריכת ריקודי עם מעל 20 שנה
             <br /><br />
-            נחזור ונתרגל יחד
+            ליווי אישי וסבלני
             <br />
-            עד שהצעדים ירגישו טבעיים ופשוטים 🫶
+            בהסברים ברורים ופשוטים
+            <br /><br />
+            נתרגל יחד שוב ושוב
+            <br />
+            עד שתרגישו בטוחים ותיהנו לרקוד 🫶
           </p>
         </div>
       </section>
