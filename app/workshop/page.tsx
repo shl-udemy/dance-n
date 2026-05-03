@@ -27,7 +27,7 @@ export default function WorkshopPage() {
         <p className="text-2xl font-bold text-[#5A3E2B] mb-4">
           קל להתחיל, כיף להתמיד
         </p>
-        <p className="text-lg text-gray-600 leading-relaxed">
+        <p className="text-lg text-gray-600 leading-relaxed font-bold">
           לימוד בקצב נוח, אווירה נעימה והמון הנאה.
         </p>
       </section>
@@ -42,8 +42,8 @@ export default function WorkshopPage() {
       <section className="py-12 px-6 bg-white">
         <div className="max-w-md mx-auto space-y-4">
           {[
-            "לא צריך נסיון",
             "לא צריך להיות רקדנים",
+            "לא צריך נסיון",
             "צריך רצון והתמדה",
           ].map((item) => (
             <div
