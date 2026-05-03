@@ -60,13 +60,13 @@ export default function WorkshopPage() {
       {/* Workshop details */}
       <section className="py-12 px-6 bg-gradient-to-br from-[#C96A2B] to-[#E58E26] text-center text-white">
         <div className="max-w-md mx-auto">
-          <div className="text-4xl mb-5">🎶</div>
-          <div className="space-y-3 text-lg leading-relaxed">
-            <p className="text-2xl font-extrabold">3 מפגשים של שעתיים</p>
-            <p>שבהם נלמד צעדי בסיס</p>
-            <p className="font-semibold">15-20 ריקודי מתחילים</p>
-            <p>שתוכלו לתרגל את הצעדים ולצבור בטחון על הרחבה</p>
+          <p className="text-2xl font-extrabold mb-6">ב-3 מפגשים של שעתיים:</p>
+          <div className="space-y-3 text-lg leading-relaxed text-right mb-6">
+            <p>✓ נלמד את צעדי הבסיס</p>
+            <p>✓ נכיר 15–20 ריקודי מתחילים</p>
+            <p>✓ נתרגל יחד בקצב נעים</p>
           </div>
+          <p className="text-xl font-semibold">ותצאו מוכנים לרחבה 🎶</p>
         </div>
       </section>
 
