@@ -91,9 +91,9 @@ export default function WorkshopPage() {
         <div className="max-w-sm mx-auto bg-white rounded-3xl shadow-lg border border-[#5A3E2B]/20 px-6 py-8">
           <div className="text-4xl mb-5">🏷️</div>
           <div className="space-y-2 text-[#5A3E2B] text-base mb-6">
-            <p>📅 3 מפגשים · 6 שעות סה״כ</p>
-            <p>👥 עד 10 משתתפים בלבד</p>
-            <p>🎓 ידע בסיסי ובטחון להכנס למעגל הרוקדים</p>
+            <p>📅 3 מפגשים · 6 שעות ממוקדות</p>
+            <p>👥 קבוצה קטנה – עד 10 משתתפים בלבד</p>
+            <p>⭐ ליווי אישי, תרגול מעשי</p>
           </div>
           <div className="border-t border-[#5A3E2B]/10 pt-5">
             <p className="text-4xl font-extrabold text-[#D9A441]">480 ₪</p>
