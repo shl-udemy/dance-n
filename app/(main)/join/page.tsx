@@ -4,11 +4,8 @@ import SignupForm from "@/components/SignupForm";
 
 export const dynamic = "force-dynamic";
 
-export default function JoinPage() {
-  redirect("/");
-}
-
 export default async function JoinPage() {
+  redirect("/");
   const content = await getPageContent();
 
   const headline = content.headline || "הצטרפו אלינו לריקוד!";
