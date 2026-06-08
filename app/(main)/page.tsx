@@ -1,5 +1,6 @@
 import VenueCarousel from "@/components/VenueCarousel";
 import SpecialCarousel from "@/components/SpecialCarousel";
+import { version } from "@/package.json";
 
 const FEATURES = [
   { icon: "🎵", title: "מוזיקה מקורית", desc: "שירים ישראליים ובינלאומיים" },
@@ -102,6 +103,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-8 text-center text-gray-500 text-sm">
         <p>© 2026 נילי אלגזר - במעגל עם נילי</p>
+        <p className="mt-1 text-xs text-gray-400">v{version}</p>
       </footer>
     </div>
   );
