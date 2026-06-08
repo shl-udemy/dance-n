@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "ריקודי עם ברמת גן",
+  description: "הרקדות ריקודי עם קבועות ברמת גן עם נילי אלגזר. רחוב הרצל 42. לכל הרמות.",
+};
 
 const MAPS_URL = "https://maps.google.com/?q=רחוב+הרצל+42+רמת+גן";
 

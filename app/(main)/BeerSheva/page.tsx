@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "ריקודי עם בבאר שבע",
+  description: "הרקדות ריקודי עם קבועות בבאר שבע עם נילי אלגזר. רחוב דוד הראובני 27. לכל הרמות.",
+};
 
 const UPCOMING_DATES = ["07.03", "21.03", "11.04", "02.05"];
 

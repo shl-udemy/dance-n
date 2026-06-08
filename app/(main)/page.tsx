@@ -100,6 +100,24 @@ export default function Home() {
         </div>
       </section>
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "נילי אלגזר",
+            jobTitle: "מדריכת ריקודי עם",
+            description: "מדריכת ריקודי עם עם מעל 20 שנות ניסיון. הרקדות קבועות ופתוחות ברחבי הארץ.",
+            url: "https://nili-bamaagal.vercel.app",
+            image: "https://nili-bamaagal.vercel.app/nili-logo-1.jpg",
+            sameAs: [],
+            knowsAbout: ["ריקודי עם", "ריקוד עממי", "הרקדות"],
+            areaServed: ["באר שבע", "רעננה", "רמת גן", "צורה"],
+          }),
+        }}
+      />
+
       {/* Footer */}
       <footer className="py-8 text-center text-gray-500 text-sm">
         <p>© 2026 נילי אלגזר - במעגל עם נילי</p>

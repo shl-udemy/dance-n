@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "ריקודי עם ברעננה",
+  description: "הרקדות ריקודי עם קבועות ברעננה עם נילי אלגזר. רחוב הנחמד 15. לכל הרמות.",
+};
 
 const MAPS_URL = "https://maps.google.com/?q=רחוב+הנחמד+15+רעננה";
 

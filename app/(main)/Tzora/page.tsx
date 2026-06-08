@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "ריקודי עם בצורה",
+  description: "הרקדות ריקודי עם בקיבוץ צורה עם נילי אלגזר. לכל הרמות.",
+};
 
 const MAPS_URL = "https://maps.google.com/?q=קיבוץ+צרועה+בית+שמש";
 
