@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dance Request Tool
 
-## Getting Started
+A Hebrew-language web app for Israeli folk dance events. Attendees submit live dance requests that are delivered instantly to the DJ via Telegram. Also handles event signups and a standalone workshop landing page.
 
-First, run the development server:
+## Features
+
+- **Dance requests** — form at `/request`, sends to venue-specific Telegram group + logs to Google Sheets
+- **Event signup** — landing page at `/join`, sends to a dedicated Telegram group
+- **Workshop landing page** — standalone page at `/workshop` with signup form, sends to Dance-B Telegram group
+- **Venue pages** — Beer Sheva, Raanana, Ramat Gan, Tzora with event schedules
+- Hebrew RTL layout throughout; all Telegram messages in Hebrew
+- No database — Google Sheets is the only persistent store
+
+## Tech Stack
+
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 |
+| Notifications | Telegram Bot API (HTTP fetch) |
+| Logging | Google Sheets API v4 (`googleapis`) |
+| Hosting | Vercel (free tier) |
+
+## Routes
+
+| Path | Description |
+|---|---|
+| `/` | Homepage with venue list |
+| `/request` | Dance request form |
+| `/join` | Event signup landing page |
+| `/workshop` | Standalone workshop landing page (no navbar) |
+| `/BeerSheva` `/Raanana` `/RamatGan` `/Tzora` | Venue detail pages |
+
+## API Endpoints
+
+| Endpoint | Description |
+|---|---|
+| `POST /api/request` | Submit a dance request → Telegram + Sheets |
+| `POST /api/signup` | Event signup → `TELEGRAM_CHAT_ID_SIGNUPS` |
+| `POST /api/workshop-signup` | Workshop signup → `TELEGRAM_CHAT_ID_DANCE_B` |
+
+## Local Development
 
 ```bash
+npm install
+cp .env.example .env.local   # fill in your secrets
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy `.env.example` to `.env.local` and fill in all values.
 
-## Learn More
+| Variable | Required | Description |
+|---|---|---|
+| `TELEGRAM_BOT_TOKEN` | Yes | From [@BotFather](https://t.me/BotFather) |
+| `TELEGRAM_CHAT_ID_DANCE_R` | Yes | Telegram group ID for Dance-R venue |
+| `TELEGRAM_CHAT_ID_DANCE_B` | Yes | Telegram group ID for Dance-B venue (also receives workshop signups) |
+| `TELEGRAM_CHAT_ID_DANCE_Z` | Yes | Telegram group ID for Dance-Z venue |
+| `TELEGRAM_CHAT_ID_SIGNUPS` | Yes | Telegram group ID for `/join` event signups |
+| `GOOGLE_SHEET_ID` | No | Sheet ID from the URL (`/d/<ID>/edit`) |
+| `GOOGLE_SERVICE_ACCOUNT_JSON` | No | Full service account JSON, minified to one line |
 
-To learn more about Next.js, take a look at the following resources:
+> Sheet logging is non-blocking — if Sheets fails the request still succeeds. If `GOOGLE_SHEET_ID` or `GOOGLE_SERVICE_ACCOUNT_JSON` are missing, logging is silently skipped.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Google Sheets setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The service account must have **Editor** access to the target sheet. Sheet columns (row 1 is data, no header row enforced):
 
-## Deploy on Vercel
+| A | B | C | D | E | F |
+|---|---|---|---|---|---|
+| Timestamp | Place | Name | Dance | Performer | Type |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Client-side Behavior
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Name is persisted in `localStorage` (`dance_request_name`) so repeat visitors don't retype it
+- Rate limit: 1 submission per minute, enforced via `localStorage` timestamp (`dance_request_last_submit`)
+
+## Deployment
+
+Push to `main` → Vercel auto-deploys. Set all env vars in the Vercel project dashboard under **Settings → Environment Variables**.
