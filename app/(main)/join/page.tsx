@@ -1,7 +1,12 @@
+import { redirect } from "next/navigation";
 import { getPageContent } from "@/lib/sheets-content";
 import SignupForm from "@/components/SignupForm";
 
 export const dynamic = "force-dynamic";
+
+export default function JoinPage() {
+  redirect("/");
+}
 
 export default async function JoinPage() {
   const content = await getPageContent();

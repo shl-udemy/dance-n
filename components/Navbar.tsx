@@ -9,7 +9,6 @@ const NAV_LINKS = [
   { href: "/Tzora", label: "רוקדים בצורעה" },
   { href: "/Raanana", label: "רוקדים ברעננה" },
   { href: "/BeerSheva", label: "רוקדים בבאר שבע" },
-  { href: "/join", label: "רישום לסדנא" },
 ];
 
 export default function Navbar() {
