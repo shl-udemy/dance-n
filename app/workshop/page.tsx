@@ -1,7 +1,9 @@
+import { redirect } from "next/navigation";
 import Image from "next/image";
 import WorkshopSignupForm from "@/components/WorkshopSignupForm";
 
 export default function WorkshopPage() {
+  redirect("/");
   return (
     <div className="min-h-screen bg-white" dir="rtl">
 
