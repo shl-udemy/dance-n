@@ -6,6 +6,24 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.6.0] — 2026-06-08
+
+### Added
+- SEO: enriched metadata with Open Graph, Twitter card, keywords, and canonical URL
+- SEO: `sitemap.xml` covering all active pages
+- SEO: `robots.txt` pointing to sitemap
+- SEO: JSON-LD `Person` structured data on homepage
+- SEO: per-page title and description on all four venue pages
+- Google Search Console ownership verification
+- Version number displayed in homepage footer (reads from `package.json`)
+- `docs/` folder with reference cheatsheets: Vercel, Google Sheets API, Telegram Bot API
+
+### Changed
+- `/workshop` disabled — redirects to homepage
+- `/join` disabled — redirects to homepage, removed from navbar
+
+---
+
 ## [0.5.0] — 2026-06-08
 
 ### Added
