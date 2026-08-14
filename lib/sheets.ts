@@ -37,14 +37,13 @@ export async function logToSheet(data: RequestData): Promise<void> {
       hour12: false,
     });
 
-    const typeLabel = data.danceType === "couples" ? "זוגות" : data.danceType === "circle" ? "מעגל" : "";
-    const rows = data.danceNames.map((danceName) => [
+    const rows = data.dances.map(({ name: danceName, type }) => [
       timestamp,
       data.place,
       data.name ?? "",
       danceName,
       data.performer ?? "",
-      typeLabel,
+      type === "couples" ? "זוגות" : type === "circle" ? "מעגל" : "",
     ]);
 
     await sheets.spreadsheets.values.append({

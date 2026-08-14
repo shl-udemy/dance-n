@@ -7,11 +7,12 @@ const RATE_LIMIT_MS = 60_000;
 const LS_NAME_KEY = "dance_request_name";
 const LS_LAST_SUBMIT_KEY = "dance_request_last_submit";
 
+type DanceRow = { name: string; type: "couples" | "circle" | "" };
+
 export default function DanceRequestForm() {
   const [name, setName] = useState("");
-  const [danceNames, setDanceNames] = useState<string[]>(() => Array(DANCE_SLOTS).fill(""));
+  const [dances, setDances] = useState<DanceRow[]>([{ name: "", type: "" }]);
   const [performer, setPerformer] = useState("");
-  const [danceType, setDanceType] = useState<"couples" | "circle" | "">("");
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
@@ -23,14 +24,30 @@ export default function DanceRequestForm() {
   }, []);
 
   function resetForm(keepName: string) {
-    setDanceNames(Array(DANCE_SLOTS).fill(""));
+    setDances([{ name: "", type: "" }]);
     setPerformer("");
-    setDanceType("");
     setName(keepName);
   }
 
   function updateDanceName(index: number, value: string) {
-    setDanceNames((prev) => prev.map((v, i) => (i === index ? value : v)));
+    setDances((prev) => prev.map((row, i) => (i === index ? { ...row, name: value } : row)));
+  }
+
+  function updateDanceType(index: number, type: "couples" | "circle") {
+    setDances((prev) =>
+      prev.map((row, i) =>
+        i === index ? { ...row, type: row.type === type ? "" : type } : row
+      )
+    );
+  }
+
+  function addRow() {
+    setDances((prev) => (prev.length >= DANCE_SLOTS ? prev : [...prev, { name: "", type: "" }]));
+  }
+
+  function removeRow(index: number) {
+    if (index === 0) return;
+    setDances((prev) => prev.filter((_, i) => i !== index));
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -51,7 +68,7 @@ export default function DanceRequestForm() {
       const res = await fetch("/api/request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, danceNames, performer, danceType }),
+        body: JSON.stringify({ name, dances, performer }),
       });
 
       if (!res.ok) {
@@ -90,8 +107,8 @@ export default function DanceRequestForm() {
         />
       </div>
 
-      {/* Dance Names */}
-      {danceNames.map((value, i) => (
+      {/* Dances */}
+      {dances.map((row, i) => (
         <div key={i} className="flex flex-col gap-1">
           <label className="text-sm font-medium text-gray-700">
             שם הריקוד {i + 1}{" "}
@@ -102,16 +119,60 @@ export default function DanceRequestForm() {
               <span className="text-gray-400 font-normal text-xs">{" "}(אופציונלי)</span>
             )}
           </label>
-          <input
-            type="text"
-            required={i === 0}
-            value={value}
-            onChange={(e) => updateDanceName(i, e.target.value)}
-            className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
-            placeholder="שם הריקוד..."
-          />
+          <div className="flex flex-wrap items-center gap-2">
+            <input
+              type="text"
+              required={i === 0}
+              value={row.name}
+              onChange={(e) => updateDanceName(i, e.target.value)}
+              className="flex-1 min-w-[120px] border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
+              placeholder="שם הריקוד..."
+            />
+            <button
+              type="button"
+              onClick={() => updateDanceType(i, "couples")}
+              className={`px-2.5 py-1.5 rounded-full text-xs font-medium transition cursor-pointer ${
+                row.type === "couples"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
+              זוגות
+            </button>
+            <button
+              type="button"
+              onClick={() => updateDanceType(i, "circle")}
+              className={`px-2.5 py-1.5 rounded-full text-xs font-medium transition cursor-pointer ${
+                row.type === "circle"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
+              מעגל
+            </button>
+            {i > 0 && (
+              <button
+                type="button"
+                aria-label={`הסר ריקוד ${i + 1}`}
+                onClick={() => removeRow(i)}
+                className="text-gray-400 hover:text-rose-500 text-lg leading-none px-1 cursor-pointer"
+              >
+                ×
+              </button>
+            )}
+          </div>
         </div>
       ))}
+
+      {/* Add Dance */}
+      <button
+        type="button"
+        onClick={addRow}
+        disabled={dances.length >= DANCE_SLOTS}
+        className="self-start border border-indigo-300 text-indigo-600 hover:bg-indigo-50 disabled:border-gray-200 disabled:text-gray-300 disabled:cursor-not-allowed rounded-lg px-3 py-1.5 text-sm font-medium transition cursor-pointer"
+      >
+        + הוסף ריקוד <span className="text-gray-400 font-normal">/ Add Dance</span>
+      </button>
 
       {/* Performer */}
       <div className="flex flex-col gap-1">
@@ -126,31 +187,6 @@ export default function DanceRequestForm() {
           className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
           placeholder="שם המבצע..."
         />
-      </div>
-
-      {/* Dance Type */}
-      <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium text-gray-700">
-          סוג ריקוד <span className="text-gray-400 font-normal">/ Dance Type</span>{" "}
-          <span className="text-gray-400 font-normal text-xs">(אופציונלי)</span>
-        </span>
-        <div className="flex flex-col gap-2">
-          {(["couples", "circle"] as const).map((type) => (
-            <label key={type} className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="radio"
-                name="danceType"
-                value={type}
-                checked={danceType === type}
-                onChange={() => setDanceType(type)}
-                className="accent-indigo-600"
-              />
-              <span className="text-sm text-gray-700">
-                {type === "couples" ? "זוגות (Couples)" : "מעגל (Circle)"}
-              </span>
-            </label>
-          ))}
-        </div>
       </div>
 
       {/* Error */}
