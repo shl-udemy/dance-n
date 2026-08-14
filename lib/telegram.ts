@@ -1,12 +1,12 @@
 export interface RequestData {
-  name: string;
+  name?: string;
   danceName: string;
   performer?: string;
-  danceType: "couples" | "circle";
+  danceType?: "couples" | "circle";
   place: "Dance-R" | "Dance-B" | "Dance-Z";
 }
 
-const DANCE_TYPE_LABEL: Record<RequestData["danceType"], string> = {
+const DANCE_TYPE_LABEL: Record<NonNullable<RequestData["danceType"]>, string> = {
   couples: "זוגות",
   circle: "מעגל",
 };
@@ -37,15 +37,21 @@ export function buildMessage(data: RequestData): string {
     "🪩 בקשת ריקוד",
     "",
     `📅 ${date} | ${time}`,
-    `👤 שם: ${data.name}`,
-    `🎵 ריקוד: ${data.danceName}`,
   ];
+
+  if (data.name) {
+    lines.push(`👤 שם: ${data.name}`);
+  }
+
+  lines.push(`🎵 ריקוד: ${data.danceName}`);
 
   if (data.performer) {
     lines.push(`🎭 מבצע: ${data.performer}`);
   }
 
-  lines.push(`👥 סוג: ${DANCE_TYPE_LABEL[data.danceType]}`);
+  if (data.danceType) {
+    lines.push(`👥 סוג: ${DANCE_TYPE_LABEL[data.danceType]}`);
+  }
 
   return lines.join("\n");
 }

@@ -10,22 +10,23 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
   }
 
-  const { name, danceName, performer, danceType, place } = body;
+  const { name, danceName, performer, danceType } = body;
 
-  if (!name?.trim() || !danceName?.trim() || !danceType || !place) {
-    return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+  if (!danceName?.trim()) {
+    return NextResponse.json({ error: "Missing required field: danceName" }, { status: 400 });
   }
 
+  const place = "Dance-B";
   const chatId = getChatId(place);
   if (!chatId) {
     return NextResponse.json({ error: "Unknown place" }, { status: 400 });
   }
 
   const data: RequestData = {
-    name: name.trim(),
+    name: name?.trim() || undefined,
     danceName: danceName.trim(),
     performer: performer?.trim() || undefined,
-    danceType,
+    danceType: danceType || undefined,
     place,
   };
 

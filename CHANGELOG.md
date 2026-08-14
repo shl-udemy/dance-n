@@ -6,6 +6,14 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.8.0] — 2026-08-14
+
+### Changed
+- Dance requests are now restricted to Beer Sheva (`Dance-B`) — the Place dropdown is removed and `/api/request` hardcodes the target Telegram group server-side
+- Only "Dance Name" is required on the request form; name, performer, and dance type are now optional (client + server), and the Telegram message and Sheets row omit/blank any missing optional fields
+
+---
+
 ## [0.7.0] — 2026-08-14
 
 ### Changed

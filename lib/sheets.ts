@@ -46,10 +46,10 @@ export async function logToSheet(data: RequestData): Promise<void> {
           [
             timestamp,
             data.place,
-            data.name,
+            data.name ?? "",
             data.danceName,
             data.performer ?? "",
-            data.danceType === "couples" ? "זוגות" : "מעגל",
+            data.danceType === "couples" ? "זוגות" : data.danceType === "circle" ? "מעגל" : "",
           ],
         ],
       },
