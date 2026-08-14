@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { DANCE_SLOTS } from "@/lib/config";
 
 const RATE_LIMIT_MS = 60_000;
 const LS_NAME_KEY = "dance_request_name";
@@ -8,7 +9,7 @@ const LS_LAST_SUBMIT_KEY = "dance_request_last_submit";
 
 export default function DanceRequestForm() {
   const [name, setName] = useState("");
-  const [danceName, setDanceName] = useState("");
+  const [danceNames, setDanceNames] = useState<string[]>(() => Array(DANCE_SLOTS).fill(""));
   const [performer, setPerformer] = useState("");
   const [danceType, setDanceType] = useState<"couples" | "circle" | "">("");
 
@@ -22,10 +23,14 @@ export default function DanceRequestForm() {
   }, []);
 
   function resetForm(keepName: string) {
-    setDanceName("");
+    setDanceNames(Array(DANCE_SLOTS).fill(""));
     setPerformer("");
     setDanceType("");
     setName(keepName);
+  }
+
+  function updateDanceName(index: number, value: string) {
+    setDanceNames((prev) => prev.map((v, i) => (i === index ? value : v)));
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -46,7 +51,7 @@ export default function DanceRequestForm() {
       const res = await fetch("/api/request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, danceName, performer, danceType }),
+        body: JSON.stringify({ name, danceNames, performer, danceType }),
       });
 
       if (!res.ok) {
@@ -85,21 +90,28 @@ export default function DanceRequestForm() {
         />
       </div>
 
-      {/* Dance Name */}
-      <div className="flex flex-col gap-1">
-        <label className="text-sm font-medium text-gray-700">
-          שם הריקוד <span className="text-gray-400 font-normal">/ Dance Name</span>
-          <span className="text-rose-500 mr-1">*</span>
-        </label>
-        <input
-          type="text"
-          required
-          value={danceName}
-          onChange={(e) => setDanceName(e.target.value)}
-          className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
-          placeholder="שם הריקוד..."
-        />
-      </div>
+      {/* Dance Names */}
+      {danceNames.map((value, i) => (
+        <div key={i} className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-gray-700">
+            שם הריקוד {i + 1}{" "}
+            <span className="text-gray-400 font-normal">/ Dance Name {i + 1}</span>
+            {i === 0 ? (
+              <span className="text-rose-500 mr-1">*</span>
+            ) : (
+              <span className="text-gray-400 font-normal text-xs">{" "}(אופציונלי)</span>
+            )}
+          </label>
+          <input
+            type="text"
+            required={i === 0}
+            value={value}
+            onChange={(e) => updateDanceName(i, e.target.value)}
+            className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
+            placeholder="שם הריקוד..."
+          />
+        </div>
+      ))}
 
       {/* Performer */}
       <div className="flex flex-col gap-1">

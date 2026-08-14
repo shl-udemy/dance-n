@@ -1,6 +1,6 @@
 export interface RequestData {
   name?: string;
-  danceName: string;
+  danceNames: string[];
   performer?: string;
   danceType?: "couples" | "circle";
   place: "Dance-R" | "Dance-B" | "Dance-Z";
@@ -43,7 +43,12 @@ export function buildMessage(data: RequestData): string {
     lines.push(`👤 שם: ${data.name}`);
   }
 
-  lines.push(`🎵 ריקוד: ${data.danceName}`);
+  if (data.danceNames.length === 1) {
+    lines.push(`🎵 ריקוד: ${data.danceNames[0]}`);
+  } else {
+    lines.push(`🎵 ריקודים (${data.danceNames.length}):`);
+    lines.push(...data.danceNames.map((name, i) => `${i + 1}. ${name}`));
+  }
 
   if (data.performer) {
     lines.push(`🎭 מבצע: ${data.performer}`);

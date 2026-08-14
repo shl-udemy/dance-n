@@ -4,7 +4,7 @@ A Hebrew-language web app for Israeli folk dance events. Attendees submit live d
 
 ## Features
 
-- **Dance requests** — form at `/request`, only `שם הריקוד` (dance name) is required; sends to the Beer Sheva (`Dance-B`) Telegram group + logs to Google Sheets
+- **Dance requests** — form at `/request` with up to 3 dance-name slots per submission (only the first is required); sends one combined Telegram message + logs one Google Sheets row per dance to the Beer Sheva (`Dance-B`) group
 - All other pages (homepage, venue pages, `/join`, `/workshop`) redirect straight to `/request`; their code is kept in place but unreachable, for easy revert
 - Hebrew RTL layout throughout; all Telegram messages in Hebrew
 - No database — Google Sheets is the only persistent store
