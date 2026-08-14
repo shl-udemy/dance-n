@@ -6,6 +6,16 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.7.0] — 2026-08-14
+
+### Changed
+- All pages except `/request` (homepage, BeerSheva, Raanana, RamatGan, Tzora, `/workshop`, `/join`) now redirect to `/request`
+
+### Removed
+- `Navbar` component (no longer needed — all pages redirect to the single request form)
+
+---
+
 ## [0.6.0] — 2026-06-08
 
 ### Added
