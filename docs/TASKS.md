@@ -14,7 +14,6 @@ Tracking doc for tasks, ideas, and progress. Every task gets a stable ID (`T001`
 
 | ID | Task | Status | Added | Notes |
 |----|------|--------|-------|-------|
-| T001 | Make `/request` page open to every user | Backlog | 2026-08-14 | App code already has no auth wall on `/request` — likely blocked by Vercel Deployment Protection in the project dashboard. Needs verification. |
 
 ## Ideas / Someday
 
@@ -28,3 +27,4 @@ Tracking doc for tasks, ideas, and progress. Every task gets a stable ID (`T001`
 
 | ID | Task | Status | Completed | Notes |
 |----|------|--------|-----------|-------|
+| T001 | Make `/request` page open to every user | Done | 2026-08-14 | Verified via `curl` with no cookies/session: page returns plain 200 with the full form, no Vercel Deployment Protection or app-level auth. Already open to anyone with the URL. |
