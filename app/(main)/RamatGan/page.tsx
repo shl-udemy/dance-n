@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "ריקודי עם ברמת גן",
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 const MAPS_URL = "https://maps.google.com/?q=רחוב+הרצל+42+רמת+גן";
 
 export default function RamatGanPage() {
+  redirect("/request");
   return (
     <div className="min-h-screen bg-gradient-to-br from-rose-50 via-white to-orange-50">
 

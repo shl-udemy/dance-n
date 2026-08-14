@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "ריקודי עם בצורה",
@@ -17,6 +18,7 @@ const AMENITIES = [
 ];
 
 export default function TzoraPage() {
+  redirect("/request");
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-yellow-50">
 

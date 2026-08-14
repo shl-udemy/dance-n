@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "ריקודי עם ברעננה",
@@ -11,6 +12,7 @@ const MAPS_URL = "https://maps.google.com/?q=רחוב+הנחמד+15+רעננה";
 const MONTHLY_DATES = ["14.03", "28.03", "23.05", "20.06"];
 
 export default function RaananaPage() {
+  redirect("/request");
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-emerald-50">
 

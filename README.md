@@ -1,13 +1,11 @@
 # Dance Request Tool
 
-A Hebrew-language web app for Israeli folk dance events. Attendees submit live dance requests that are delivered instantly to the DJ via Telegram. Also handles event signups and a standalone workshop landing page.
+A Hebrew-language web app for Israeli folk dance events. Attendees submit live dance requests that are delivered instantly to the DJ via Telegram.
 
 ## Features
 
 - **Dance requests** — form at `/request`, sends to venue-specific Telegram group + logs to Google Sheets
-- **Event signup** — landing page at `/join`, sends to a dedicated Telegram group
-- **Workshop landing page** — standalone page at `/workshop` with signup form, sends to Dance-B Telegram group
-- **Venue pages** — Beer Sheva, Raanana, Ramat Gan, Tzora with event schedules
+- All other pages (homepage, venue pages, `/join`, `/workshop`) redirect straight to `/request`; their code is kept in place but unreachable, for easy revert
 - Hebrew RTL layout throughout; all Telegram messages in Hebrew
 - No database — Google Sheets is the only persistent store
 
@@ -26,11 +24,8 @@ A Hebrew-language web app for Israeli folk dance events. Attendees submit live d
 
 | Path | Description |
 |---|---|
-| `/` | Homepage with venue list |
-| `/request` | Dance request form |
-| `/join` | Event signup landing page |
-| `/workshop` | Standalone workshop landing page (no navbar) |
-| `/BeerSheva` `/Raanana` `/RamatGan` `/Tzora` | Venue detail pages |
+| `/request` | Dance request form — the only page open to users |
+| `/` `/join` `/workshop` `/BeerSheva` `/Raanana` `/RamatGan` `/Tzora` | All redirect to `/request` (page code left in place, unreachable, for easy revert) |
 
 ## API Endpoints
 

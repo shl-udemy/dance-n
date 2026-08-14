@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import VenueCarousel from "@/components/VenueCarousel";
 import SpecialCarousel from "@/components/SpecialCarousel";
 import { version } from "@/package.json";
@@ -9,6 +10,7 @@ const FEATURES = [
 ];
 
 export default function Home() {
+  redirect("/request");
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-rose-50">
 

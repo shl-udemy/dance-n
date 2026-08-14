@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "ריקודי עם בבאר שבע",
@@ -12,6 +13,7 @@ const MAPS_URL =
   "https://maps.google.com/?q=רחוב+דוד+הראובני+27+באר+שבע";
 
 export default function BeerShevaPage() {
+  redirect("/request");
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
 
