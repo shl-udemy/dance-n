@@ -4,7 +4,7 @@ A Hebrew-language web app for Israeli folk dance events. Attendees submit live d
 
 ## Features
 
-- **Dance requests** — form at `/request`, sends to venue-specific Telegram group + logs to Google Sheets
+- **Dance requests** — form at `/request`, only `שם הריקוד` (dance name) is required; sends to the Beer Sheva (`Dance-B`) Telegram group + logs to Google Sheets
 - All other pages (homepage, venue pages, `/join`, `/workshop`) redirect straight to `/request`; their code is kept in place but unreachable, for easy revert
 - Hebrew RTL layout throughout; all Telegram messages in Hebrew
 - No database — Google Sheets is the only persistent store
@@ -52,9 +52,9 @@ Copy `.env.example` to `.env.local` and fill in all values.
 | Variable | Required | Description |
 |---|---|---|
 | `TELEGRAM_BOT_TOKEN` | Yes | From [@BotFather](https://t.me/BotFather) |
-| `TELEGRAM_CHAT_ID_DANCE_R` | Yes | Telegram group ID for Dance-R venue |
-| `TELEGRAM_CHAT_ID_DANCE_B` | Yes | Telegram group ID for Dance-B venue (also receives workshop signups) |
-| `TELEGRAM_CHAT_ID_DANCE_Z` | Yes | Telegram group ID for Dance-Z venue |
+| `TELEGRAM_CHAT_ID_DANCE_R` | No | Telegram group ID for Dance-R venue (currently unused — `/api/request` only submits to Dance-B) |
+| `TELEGRAM_CHAT_ID_DANCE_B` | Yes | Telegram group ID for Dance-B venue — the only place `/request` currently submits to; also receives workshop signups |
+| `TELEGRAM_CHAT_ID_DANCE_Z` | No | Telegram group ID for Dance-Z venue (currently unused — `/api/request` only submits to Dance-B) |
 | `TELEGRAM_CHAT_ID_SIGNUPS` | Yes | Telegram group ID for `/join` event signups |
 | `GOOGLE_SHEET_ID` | No | Sheet ID from the URL (`/d/<ID>/edit`) |
 | `GOOGLE_SERVICE_ACCOUNT_JSON` | No | Full service account JSON, minified to one line |

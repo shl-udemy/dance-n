@@ -2,11 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-const PLACES: { label: string; id: string }[] = [
-  { label: "רעננה", id: "Dance-R" },
-  { label: "באר שבע", id: "Dance-B" },
-  { label: "צלפון", id: "Dance-Z" },
-];
 const RATE_LIMIT_MS = 60_000;
 const LS_NAME_KEY = "dance_request_name";
 const LS_LAST_SUBMIT_KEY = "dance_request_last_submit";
@@ -16,7 +11,6 @@ export default function DanceRequestForm() {
   const [danceName, setDanceName] = useState("");
   const [performer, setPerformer] = useState("");
   const [danceType, setDanceType] = useState<"couples" | "circle" | "">("");
-  const [place, setPlace] = useState<string>(PLACES[0].id);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
@@ -31,7 +25,6 @@ export default function DanceRequestForm() {
     setDanceName("");
     setPerformer("");
     setDanceType("");
-    setPlace(PLACES[0].id);
     setName(keepName);
   }
 
@@ -39,11 +32,6 @@ export default function DanceRequestForm() {
     e.preventDefault();
     setErrorMsg("");
     setSuccessMsg("");
-
-    if (!danceType) {
-      setErrorMsg("נא לבחור סוג ריקוד / Please select dance type");
-      return;
-    }
 
     const lastSubmit = Number(localStorage.getItem(LS_LAST_SUBMIT_KEY) ?? 0);
     const elapsed = Date.now() - lastSubmit;
@@ -58,7 +46,7 @@ export default function DanceRequestForm() {
       const res = await fetch("/api/request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, danceName, performer, danceType, place }),
+        body: JSON.stringify({ name, danceName, performer, danceType }),
       });
 
       if (!res.ok) {
@@ -85,12 +73,11 @@ export default function DanceRequestForm() {
       {/* Name */}
       <div className="flex flex-col gap-1">
         <label className="text-sm font-medium text-gray-700">
-          שמך <span className="text-gray-400 font-normal">/ Your Name</span>
-          <span className="text-rose-500 mr-1">*</span>
+          שמך <span className="text-gray-400 font-normal">/ Your Name</span>{" "}
+          <span className="text-gray-400 font-normal text-xs">(אופציונלי)</span>
         </label>
         <input
           type="text"
-          required
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
@@ -132,8 +119,8 @@ export default function DanceRequestForm() {
       {/* Dance Type */}
       <div className="flex flex-col gap-2">
         <span className="text-sm font-medium text-gray-700">
-          סוג ריקוד <span className="text-gray-400 font-normal">/ Dance Type</span>
-          <span className="text-rose-500 mr-1">*</span>
+          סוג ריקוד <span className="text-gray-400 font-normal">/ Dance Type</span>{" "}
+          <span className="text-gray-400 font-normal text-xs">(אופציונלי)</span>
         </span>
         <div className="flex flex-col gap-2">
           {(["couples", "circle"] as const).map((type) => (
@@ -152,25 +139,6 @@ export default function DanceRequestForm() {
             </label>
           ))}
         </div>
-      </div>
-
-      {/* Place */}
-      <div className="flex flex-col gap-1">
-        <label className="text-sm font-medium text-gray-700">
-          מקום <span className="text-gray-400 font-normal">/ Place</span>
-          <span className="text-rose-500 mr-1">*</span>
-        </label>
-        <select
-          value={place}
-          onChange={(e) => setPlace(e.target.value)}
-          className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 transition bg-white"
-        >
-          {PLACES.map((p) => (
-            <option key={p.id} value={p.id}>
-              {p.label}
-            </option>
-          ))}
-        </select>
       </div>
 
       {/* Error */}
