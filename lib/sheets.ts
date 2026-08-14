@@ -42,7 +42,7 @@ export async function logToSheet(data: RequestData): Promise<void> {
       data.place,
       data.name ?? "",
       danceName,
-      data.performer ?? "",
+      "",
       type === "couples" ? "זוגות" : type === "circle" ? "מעגל" : "",
     ]);
 

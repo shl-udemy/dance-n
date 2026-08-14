@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
   }
 
-  const { name, dances, performer } = body;
+  const { name, dances } = body;
 
   const normalizedDances = (Array.isArray(dances) ? dances : [])
     .slice(0, DANCE_SLOTS)
@@ -37,7 +37,6 @@ export async function POST(req: NextRequest) {
   const data: RequestData = {
     name: name?.trim() || undefined,
     dances: normalizedDances,
-    performer: performer?.trim() || undefined,
     place,
   };
 
