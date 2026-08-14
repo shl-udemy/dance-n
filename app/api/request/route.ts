@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { buildMessage, getChatId, sendToTelegram } from "@/lib/telegram";
 import type { RequestData } from "@/lib/telegram";
 import { logToSheet } from "@/lib/sheets";
+import { DANCE_SLOTS } from "@/lib/config";
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
@@ -10,10 +11,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
   }
 
-  const { name, danceName, performer, danceType } = body;
+  const { name, danceNames, performer, danceType } = body;
 
-  if (!danceName?.trim()) {
-    return NextResponse.json({ error: "Missing required field: danceName" }, { status: 400 });
+  const trimmedDanceNames = (Array.isArray(danceNames) ? danceNames : [])
+    .slice(0, DANCE_SLOTS)
+    .map((s) => (typeof s === "string" ? s.trim() : ""))
+    .filter(Boolean);
+
+  if (trimmedDanceNames.length === 0) {
+    return NextResponse.json({ error: "Missing required field: danceNames" }, { status: 400 });
   }
 
   const place = "Dance-B";
@@ -24,7 +30,7 @@ export async function POST(req: NextRequest) {
 
   const data: RequestData = {
     name: name?.trim() || undefined,
-    danceName: danceName.trim(),
+    danceNames: trimmedDanceNames,
     performer: performer?.trim() || undefined,
     danceType: danceType || undefined,
     place,

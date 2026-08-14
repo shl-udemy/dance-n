@@ -37,24 +37,23 @@ export async function logToSheet(data: RequestData): Promise<void> {
       hour12: false,
     });
 
+    const typeLabel = data.danceType === "couples" ? "זוגות" : data.danceType === "circle" ? "מעגל" : "";
+    const rows = data.danceNames.map((danceName) => [
+      timestamp,
+      data.place,
+      data.name ?? "",
+      danceName,
+      data.performer ?? "",
+      typeLabel,
+    ]);
+
     await sheets.spreadsheets.values.append({
       spreadsheetId: sheetId,
       range: "A1",
       valueInputOption: "USER_ENTERED",
-      requestBody: {
-        values: [
-          [
-            timestamp,
-            data.place,
-            data.name ?? "",
-            data.danceName,
-            data.performer ?? "",
-            data.danceType === "couples" ? "זוגות" : data.danceType === "circle" ? "מעגל" : "",
-          ],
-        ],
-      },
+      requestBody: { values: rows },
     });
-    console.log("Google Sheets: row logged successfully");
+    console.log(`Google Sheets: ${rows.length} row(s) logged successfully`);
   } catch (err) {
     console.warn("Failed to log to Google Sheets:", (err as Error).message ?? err);
   }

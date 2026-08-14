@@ -6,6 +6,16 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.9.0] — 2026-08-14
+
+### Added
+- Request form now supports up to 3 dance-name slots per submission (only the first is required) instead of a single dance name
+
+### Changed
+- A submission with multiple dance names sends one combined Telegram message and logs one Google Sheets row per dance
+
+---
+
 ## [0.8.0] — 2026-08-14
 
 ### Changed
