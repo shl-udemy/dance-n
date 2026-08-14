@@ -67,7 +67,7 @@ The service account must have **Editor** access to the target sheet. Sheet colum
 
 | A | B | C | D | E | F |
 |---|---|---|---|---|---|
-| Timestamp | Place | Name | Dance | Performer | Type |
+| Timestamp | Place | Name | Dance | Performer (unused, always blank) | Type |
 
 ## Client-side Behavior
 

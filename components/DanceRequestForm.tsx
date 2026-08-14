@@ -12,7 +12,6 @@ type DanceRow = { name: string; type: "couples" | "circle" | "" };
 export default function DanceRequestForm() {
   const [name, setName] = useState("");
   const [dances, setDances] = useState<DanceRow[]>([{ name: "", type: "" }]);
-  const [performer, setPerformer] = useState("");
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
@@ -25,7 +24,6 @@ export default function DanceRequestForm() {
 
   function resetForm(keepName: string) {
     setDances([{ name: "", type: "" }]);
-    setPerformer("");
     setName(keepName);
   }
 
@@ -68,7 +66,7 @@ export default function DanceRequestForm() {
       const res = await fetch("/api/request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, dances, performer }),
+        body: JSON.stringify({ name, dances }),
       });
 
       if (!res.ok) {
@@ -173,21 +171,6 @@ export default function DanceRequestForm() {
       >
         + הוסף ריקוד <span className="text-gray-400 font-normal">/ Add Dance</span>
       </button>
-
-      {/* Performer */}
-      <div className="flex flex-col gap-1">
-        <label className="text-sm font-medium text-gray-700">
-          מבצע <span className="text-gray-400 font-normal">/ Performer</span>{" "}
-          <span className="text-gray-400 font-normal text-xs">(אופציונלי)</span>
-        </label>
-        <input
-          type="text"
-          value={performer}
-          onChange={(e) => setPerformer(e.target.value)}
-          className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
-          placeholder="שם המבצע..."
-        />
-      </div>
 
       {/* Error */}
       {errorMsg && (

@@ -6,6 +6,13 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.10.1] — 2026-08-14
+
+### Removed
+- Performer field removed from the request form; the Google Sheets "Performer" column is kept for layout compatibility but is now always blank
+
+---
+
 ## [0.10.0] — 2026-08-14
 
 ### Changed

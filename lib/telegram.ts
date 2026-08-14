@@ -6,7 +6,6 @@ export interface Dance {
 export interface RequestData {
   name?: string;
   dances: Dance[];
-  performer?: string;
   place: "Dance-R" | "Dance-B" | "Dance-Z";
 }
 
@@ -56,10 +55,6 @@ export function buildMessage(data: RequestData): string {
   } else {
     lines.push(`🎵 ריקודים (${data.dances.length}):`);
     lines.push(...data.dances.map((d, i) => `${i + 1}. ${formatDance(d)}`));
-  }
-
-  if (data.performer) {
-    lines.push(`🎭 מבצע: ${data.performer}`);
   }
 
   return lines.join("\n");
