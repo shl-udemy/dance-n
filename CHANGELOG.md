@@ -6,6 +6,13 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.10.2] — 2026-08-14
+
+### Changed
+- The "+ Add Dance" button is now hidden entirely once the 3-dance max is reached (was previously shown but disabled), and stays disabled until the previous dance row's name is filled in
+
+---
+
 ## [0.10.1] — 2026-08-14
 
 ### Removed

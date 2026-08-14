@@ -163,14 +163,16 @@ export default function DanceRequestForm() {
       ))}
 
       {/* Add Dance */}
-      <button
-        type="button"
-        onClick={addRow}
-        disabled={dances.length >= DANCE_SLOTS}
-        className="self-start border border-indigo-300 text-indigo-600 hover:bg-indigo-50 disabled:border-gray-200 disabled:text-gray-300 disabled:cursor-not-allowed rounded-lg px-3 py-1.5 text-sm font-medium transition cursor-pointer"
-      >
-        + הוסף ריקוד <span className="text-gray-400 font-normal">/ Add Dance</span>
-      </button>
+      {dances.length < DANCE_SLOTS && (
+        <button
+          type="button"
+          onClick={addRow}
+          disabled={!dances[dances.length - 1].name.trim()}
+          className="self-start border border-indigo-300 text-indigo-600 hover:bg-indigo-50 disabled:border-gray-200 disabled:text-gray-300 disabled:cursor-not-allowed rounded-lg px-3 py-1.5 text-sm font-medium transition cursor-pointer"
+        >
+          + הוסף ריקוד <span className="text-gray-400 font-normal">/ Add Dance</span>
+        </button>
+      )}
 
       {/* Error */}
       {errorMsg && (
