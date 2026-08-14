@@ -6,6 +6,14 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.10.0] — 2026-08-14
+
+### Changed
+- Dance type (couples/circle) is now selected per-dance, inline next to each dance-name field, instead of one shared selector for the whole submission
+- The form starts with a single dance row and grows via an "+ הוסף ריקוד / Add Dance" button up to the 3-dance max; rows beyond the first can be removed again
+
+---
+
 ## [0.9.0] — 2026-08-14
 
 ### Added

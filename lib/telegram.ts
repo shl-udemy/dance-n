@@ -1,15 +1,23 @@
+export interface Dance {
+  name: string;
+  type?: "couples" | "circle";
+}
+
 export interface RequestData {
   name?: string;
-  danceNames: string[];
+  dances: Dance[];
   performer?: string;
-  danceType?: "couples" | "circle";
   place: "Dance-R" | "Dance-B" | "Dance-Z";
 }
 
-const DANCE_TYPE_LABEL: Record<NonNullable<RequestData["danceType"]>, string> = {
+const DANCE_TYPE_LABEL: Record<NonNullable<Dance["type"]>, string> = {
   couples: "זוגות",
   circle: "מעגל",
 };
+
+function formatDance(d: Dance): string {
+  return d.type ? `${d.name} (${DANCE_TYPE_LABEL[d.type]})` : d.name;
+}
 
 export function getChatId(place: string): string | undefined {
   const map: Record<RequestData["place"], string | undefined> = {
@@ -43,19 +51,15 @@ export function buildMessage(data: RequestData): string {
     lines.push(`👤 שם: ${data.name}`);
   }
 
-  if (data.danceNames.length === 1) {
-    lines.push(`🎵 ריקוד: ${data.danceNames[0]}`);
+  if (data.dances.length === 1) {
+    lines.push(`🎵 ריקוד: ${formatDance(data.dances[0])}`);
   } else {
-    lines.push(`🎵 ריקודים (${data.danceNames.length}):`);
-    lines.push(...data.danceNames.map((name, i) => `${i + 1}. ${name}`));
+    lines.push(`🎵 ריקודים (${data.dances.length}):`);
+    lines.push(...data.dances.map((d, i) => `${i + 1}. ${formatDance(d)}`));
   }
 
   if (data.performer) {
     lines.push(`🎭 מבצע: ${data.performer}`);
-  }
-
-  if (data.danceType) {
-    lines.push(`👥 סוג: ${DANCE_TYPE_LABEL[data.danceType]}`);
   }
 
   return lines.join("\n");

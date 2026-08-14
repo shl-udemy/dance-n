@@ -11,15 +11,21 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
   }
 
-  const { name, danceNames, performer, danceType } = body;
+  const { name, dances, performer } = body;
 
-  const trimmedDanceNames = (Array.isArray(danceNames) ? danceNames : [])
+  const normalizedDances = (Array.isArray(dances) ? dances : [])
     .slice(0, DANCE_SLOTS)
-    .map((s) => (typeof s === "string" ? s.trim() : ""))
-    .filter(Boolean);
+    .map((d) => {
+      const rawName = d && typeof d === "object" ? d.name : undefined;
+      const rawType = d && typeof d === "object" ? d.type : undefined;
+      const trimmedName = typeof rawName === "string" ? rawName.trim() : "";
+      const type = rawType === "couples" || rawType === "circle" ? rawType : undefined;
+      return { name: trimmedName, type };
+    })
+    .filter((d) => d.name.length > 0);
 
-  if (trimmedDanceNames.length === 0) {
-    return NextResponse.json({ error: "Missing required field: danceNames" }, { status: 400 });
+  if (normalizedDances.length === 0) {
+    return NextResponse.json({ error: "Missing required field: dances" }, { status: 400 });
   }
 
   const place = "Dance-B";
@@ -30,9 +36,8 @@ export async function POST(req: NextRequest) {
 
   const data: RequestData = {
     name: name?.trim() || undefined,
-    danceNames: trimmedDanceNames,
+    dances: normalizedDances,
     performer: performer?.trim() || undefined,
-    danceType: danceType || undefined,
     place,
   };
 
