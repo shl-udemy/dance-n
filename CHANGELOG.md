@@ -6,6 +6,13 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.10.6] — 2026-08-15
+
+### Changed
+- Event name line on `/request` is now larger and rose-colored instead of small gray text
+
+---
+
 ## [0.10.5] — 2026-08-15
 
 ### Added

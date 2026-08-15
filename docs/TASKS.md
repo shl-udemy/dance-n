@@ -2,7 +2,7 @@
 
 Tracking doc for tasks, ideas, and progress. Every task gets a stable ID (`T001`, `T002`, ...) so it can be referenced from commits, PRs, or conversations.
 
-**Next ID: T017**
+**Next ID: T018**
 
 ## How to use
 - Statuses: `Backlog` · `In Progress` · `Done` · `Idea`
@@ -40,3 +40,4 @@ Tracking doc for tasks, ideas, and progress. Every task gets a stable ID (`T001`
 | T014 | Fix mobile layout: dance row wraps unevenly at narrow widths | Done | 2026-08-15 | On real narrow phones (~320-350px, tested by constraining the page container width via injected CSS since the browser tool's window resize wasn't taking effect in this environment), each dance row's זוגות/מעגל pills (and × on rows 2+) could wrap independently — one pill dropping to its own line while the other stayed up top, looking broken. Fixed by wrapping the pills + × in their own nested `flex items-center gap-2 shrink-0` container inside the row's `flex flex-wrap` div, so on narrow screens the whole controls group wraps together as one unit onto a second line below the name input, instead of splitting apart; bumped the name input's `min-w` from 120px to 140px. Confirmed via live test at simulated 320px width, empty and filled rows, with and without the remove button. |
 | T015 | Update `/request` subtitle text | Done | 2026-08-15 | `app/(main)/request/page.tsx`: replaced the subtitle "שלחו בקשה ונשתדל לרקוד בשבילכם!" with "בקשות לריקודים מתקבלות באהבה 💃🕺". Confirmed via live browser test. |
 | T016 | Mention event name on `/request` header | Done | 2026-08-15 | `app/(main)/request/page.tsx`: added "מרתון באר שבע עם נילי אלגזר" as a small line between the "בקשת ריקוד" title and the friendly subtitle, so visitors know which event the requests are for. Confirmed via live browser test. |
+| T017 | Style the event name line: bigger + colorful | Done | 2026-08-15 | `app/(main)/request/page.tsx`: event name line bumped from `text-sm text-gray-400` to `text-lg sm:text-xl font-semibold text-rose-500` — just a step below the `text-2xl sm:text-3xl` title, and colored to match the page's rose/orange gradient accent instead of plain gray. Confirmed via live browser test. |
