@@ -6,6 +6,13 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.10.5] — 2026-08-15
+
+### Added
+- `/request` header now shows the event name "מרתון באר שבע עם נילי אלגזר"
+
+---
+
 ## [0.10.4] — 2026-08-15
 
 ### Changed
