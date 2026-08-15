@@ -6,6 +6,13 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.10.3] — 2026-08-15
+
+### Fixed
+- Dance row layout on narrow phone screens (~320-350px): the type pills/remove button no longer wrap independently of each other, breaking the row layout — they now wrap together as one unit below the dance-name field
+
+---
+
 ## [0.10.2] — 2026-08-14
 
 ### Changed
