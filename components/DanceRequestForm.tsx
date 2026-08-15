@@ -123,41 +123,43 @@ export default function DanceRequestForm() {
               required={i === 0}
               value={row.name}
               onChange={(e) => updateDanceName(i, e.target.value)}
-              className="flex-1 min-w-[120px] border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
+              className="flex-1 min-w-[140px] border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
               placeholder="שם הריקוד..."
             />
-            <button
-              type="button"
-              onClick={() => updateDanceType(i, "couples")}
-              className={`px-2.5 py-1.5 rounded-full text-xs font-medium transition cursor-pointer ${
-                row.type === "couples"
-                  ? "bg-indigo-600 text-white"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-              }`}
-            >
-              זוגות
-            </button>
-            <button
-              type="button"
-              onClick={() => updateDanceType(i, "circle")}
-              className={`px-2.5 py-1.5 rounded-full text-xs font-medium transition cursor-pointer ${
-                row.type === "circle"
-                  ? "bg-indigo-600 text-white"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-              }`}
-            >
-              מעגל
-            </button>
-            {i > 0 && (
+            <div className="flex items-center gap-2 shrink-0">
               <button
                 type="button"
-                aria-label={`הסר ריקוד ${i + 1}`}
-                onClick={() => removeRow(i)}
-                className="text-gray-400 hover:text-rose-500 text-lg leading-none px-1 cursor-pointer"
+                onClick={() => updateDanceType(i, "couples")}
+                className={`px-2.5 py-1.5 rounded-full text-xs font-medium transition cursor-pointer ${
+                  row.type === "couples"
+                    ? "bg-indigo-600 text-white"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                }`}
               >
-                ×
+                זוגות
               </button>
-            )}
+              <button
+                type="button"
+                onClick={() => updateDanceType(i, "circle")}
+                className={`px-2.5 py-1.5 rounded-full text-xs font-medium transition cursor-pointer ${
+                  row.type === "circle"
+                    ? "bg-indigo-600 text-white"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                }`}
+              >
+                מעגל
+              </button>
+              {i > 0 && (
+                <button
+                  type="button"
+                  aria-label={`הסר ריקוד ${i + 1}`}
+                  onClick={() => removeRow(i)}
+                  className="text-gray-400 hover:text-rose-500 text-lg leading-none px-1 cursor-pointer"
+                >
+                  ×
+                </button>
+              )}
+            </div>
           </div>
         </div>
       ))}
