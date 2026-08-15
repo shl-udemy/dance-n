@@ -8,7 +8,7 @@ export default function RequestPage() {
         <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-l from-orange-600 via-rose-500 to-amber-500 bg-clip-text text-transparent mb-2">
           בקשת ריקוד
         </h1>
-        <p className="text-gray-500">שלחו בקשה ונשתדל לרקוד בשבילכם!</p>
+        <p className="text-gray-500">בקשות לריקודים מתקבלות באהבה 💃🕺</p>
       </div>
       <DanceRequestForm />
     </div>

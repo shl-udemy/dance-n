@@ -6,6 +6,13 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.10.4] — 2026-08-15
+
+### Changed
+- `/request` subtitle text updated to "בקשות לריקודים מתקבלות באהבה 💃🕺"
+
+---
+
 ## [0.10.3] — 2026-08-15
 
 ### Fixed
