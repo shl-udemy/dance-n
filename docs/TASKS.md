@@ -2,7 +2,7 @@
 
 Tracking doc for tasks, ideas, and progress. Every task gets a stable ID (`T001`, `T002`, ...) so it can be referenced from commits, PRs, or conversations.
 
-**Next ID: T015**
+**Next ID: T016**
 
 ## How to use
 - Statuses: `Backlog` · `In Progress` · `Done` · `Idea`
@@ -38,3 +38,4 @@ Tracking doc for tasks, ideas, and progress. Every task gets a stable ID (`T001`
 | T012 | Remove the Performer field from the request form | Done | 2026-08-14 | Removed `performer` state/input from `DanceRequestForm.tsx`, `performer` from the API payload/`RequestData` (`app/api/request/route.ts`, `lib/telegram.ts`), and the `🎭 מבצע:` line from `buildMessage()`. `logToSheet()` keeps the existing 6-column layout (Timestamp\|Place\|Name\|Dance\|Performer\|Type) for compatibility with the live sheet, but the Performer column is now always written as an empty string (README's sheet-columns table annotated accordingly). Confirmed via live browser test: form has no Performer field, submission still succeeds end-to-end. |
 | T013 | "Add Dance" button UX: hide at max, require previous name filled | Done | 2026-08-14 | `DanceRequestForm.tsx`: the "+ הוסף ריקוד" button is no longer rendered at all once `dances.length >= DANCE_SLOTS` (was previously shown but disabled); while below the max, it stays `disabled` until the last row's dance-name is non-blank (`!dances[dances.length - 1].name.trim()`), preventing users from stacking empty rows. Confirmed via live browser test: button greyed out on empty row 1, enables after typing, greys out again on each new empty row, and disappears entirely once 3 rows exist. |
 | T014 | Fix mobile layout: dance row wraps unevenly at narrow widths | Done | 2026-08-15 | On real narrow phones (~320-350px, tested by constraining the page container width via injected CSS since the browser tool's window resize wasn't taking effect in this environment), each dance row's זוגות/מעגל pills (and × on rows 2+) could wrap independently — one pill dropping to its own line while the other stayed up top, looking broken. Fixed by wrapping the pills + × in their own nested `flex items-center gap-2 shrink-0` container inside the row's `flex flex-wrap` div, so on narrow screens the whole controls group wraps together as one unit onto a second line below the name input, instead of splitting apart; bumped the name input's `min-w` from 120px to 140px. Confirmed via live test at simulated 320px width, empty and filled rows, with and without the remove button. |
+| T015 | Update `/request` subtitle text | Done | 2026-08-15 | `app/(main)/request/page.tsx`: replaced the subtitle "שלחו בקשה ונשתדל לרקוד בשבילכם!" with "בקשות לריקודים מתקבלות באהבה 💃🕺". Confirmed via live browser test. |
